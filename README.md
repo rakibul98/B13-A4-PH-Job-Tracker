@@ -1,5 +1,3 @@
-
-
 ## Answers to Questions
 
 ### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
@@ -16,9 +14,15 @@ newElement.innerText = 'Hello DOM';
 parentDiv.appendChild(newElement);
 
 ### 3. What is Event Bubbling? And how does it work?
+
 Event bubbling in JavaScript means that when an event occurs like a click on the child element, that same event comes up and affects its parent element as well. In this way, both the child element and the parent element can respond to the event.
 
 ### 4. What is Event Delegation in JavaScript? Why is it useful?
+
 Event Delegation is a technique in JavaScript where a single event listener is added to a parent element to handle events for its child elements. Instead of attaching separate event listeners to each child, the parent listens for events that bubble up from the children and handles them using the event object.
 Event delegation works because of event bubbling, where events propagate from the target element to its ancestors in the DOM.
 it improves performance,works with dynamic elements, clean and maintainable code.
+
+### 5. What is the difference between preventDefault() and stopPropagation() methods?
+
+In JavaScript event handling, preventDefault() and stopPropagation() are two methods used to control how events behave in the browser. Although both are used with events, they serve different purposes.
