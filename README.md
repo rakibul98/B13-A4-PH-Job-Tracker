@@ -15,3 +15,6 @@ const newElement = document.createElement('p');
 newElement.innerText = 'Hello DOM';
 parentDiv.appendChild(newElement);
 
+### 3. What is Event Bubbling? And how does it work?
+Event bubbling in JavaScript means that when an event occurs like a click on the child element, that same event comes up and affects its parent element as well. In this way, both the child element and the parent element can respond to the event.
+
