@@ -4,11 +4,7 @@
 
 ### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
-### 2. How do you create and insert a new element into the DOM?
-
-### 3. What is Event Bubbling? And how does it work?
-
-### 4. What is Event Delegation in JavaScript? Why is it useful?
-
-### 5. What is the difference between preventDefault() and stopPropagation() methods?
+getElementById: Finds One element using id.
+getElementsByClassName: Finds many elements using class name.
+querySelector / querySelectorAll: querySelector finds the 1st matching element using CSS selector and querySelectorAll finds all matching elements using CSS selector.
 
