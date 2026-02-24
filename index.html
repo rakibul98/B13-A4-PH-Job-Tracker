@@ -1,15 +1,329 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PH Job Tracker</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Job Tracker</title>
+
 </head>
-<body>
-    <header>
-        <div>
-            <h1>PH JOB TRACKER</h1>
-        </div>
+
+<body class="bg-[#F1F2F4] py-6">
+    <header class="mx-auto  w-10/12 space-y-5">
+        <h1 class="text-2xl md:text-3xl font-bold text-[#002C5C]">Job Application Tracker</h1>
+
+        <!-- Counter Card Section -->
+        <section id="counters-container" class=" grid grid-cols-3 gap-5">
+
+            <!-- Total Card -->
+            <div id="total-counter-container" class="bg-white rounded-lg p-4 hover:border border-[#002C5C]">
+                <p class="text-[#323B49] text-sm font-medium mb-1">Total</p>
+                <h4 id="total-counter-number" class="text-2xl text-[#002C5C] font-bold">0</h4>
+            </div>
+
+            <!-- Interview Card -->
+            <div id="interview-counter-container" class=" bg-white rounded-lg p-4 hover:border border-[#10B981]">
+                <p class="text-[#323B49] text-sm font-medium mb-1">Interview</p>
+                <h4 id="interview-counter-number" class="text-2xl text-[#10B981] font-bold">0</h4>
+            </div>
+
+            <!-- Rejected Card -->
+            <div id="rejected-counter-container" class="bg-white rounded-lg p-4 hover:border border-[#EF4444]">
+                <p class="text-[#323B49] text-sm font-medium mb-1">Rejected</p>
+                <h4 id="rejected-counter-number" class="text-2xl text-[#EF4444] font-bold">0</h4>
+            </div>
+        </section>
     </header>
+
+    <!-- available job section -->
+    <section id="available-job-section" class="available-job-section w-10/12 mx-auto mt-8">
+        <!-- Header and total jobs counter  -->
+        <section class="flex justify-between" id="section-header">
+            <h3 class="text-xl font-semibold text-[#002C5C]">Available Jobs</h3>
+
+            <p id="available-job-counter" class="font-medium text-[#64748B]"></p>
+        </section>
+
+        <!-- tabs to navigate all | interview | rejected-->
+        <section id="status-container" class="mt-5 space-x-5">
+            <button id="all-status-btn"
+                class="status-btn text-xs font-medium bg-[#E5E7EB] text-[#64748B] rounded-md px-6 py-2 transition">
+                All
+            </button>
+
+            <button id="interview-status-btn"
+                class="status-btn text-xs font-medium bg-[#E5E7EB] text-[#64748B] rounded-md px-6 py-2 transition">
+                Interview
+            </button>
+
+            <button id="rejected-status-btn"
+                class="status-btn text-xs font-medium bg-[#E5E7EB] text-[#64748B] rounded-md px-6 py-2 transition">
+                Rejected
+            </button>
+        </section>
+
+        <!-- jobs card  0-->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">Mobile First Corp</h2>
+
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">React Native Developer</p>
+                <p class="text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2  updated-status cursor-default">NOT
+                        APPLIED</button>
+
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+
+                <p class="text-[#343e4b]">Build cross-platform mobile applications using React Native. Work on products
+                    used by millions of users worldwide.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <!-- interview button  -->
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+
+                    <!-- rejected button  -->
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 1 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">TechNova Labs</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </span>
+                </div>
+                <p class="text-[#64748B]">Frontend Developer</p>
+                <p class="text-[#64748B]">Remote • Full-time • $90,000 - $120,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Build modern UI using React and Tailwind CSS for SaaS dashboards.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 2 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">CloudStack Inc</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">Backend Node.js Developer</p>
+                <p class="text-[#64748B]">Hybrid • Full-time • $110,000 - $150,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Develop scalable APIs using Node.js, Express and MongoDB.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 3 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">PixelForge Studio</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">UI/UX Designer</p>
+                <p class="text-[#64748B]">Remote • Contract • $70,000 - $95,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Design intuitive mobile and web experiences using Figma.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 4 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">DataSphere AI</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">Python AI Engineer</p>
+                <p class="text-[#64748B]">Remote • Full-time • $140,000 - $180,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Work with ML models, data pipelines and AI-based automation tools.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 5 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">NextWave Systems</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">Flutter Developer</p>
+                <p class="text-[#64748B]">Onsite • Full-time • $95,000 - $125,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Develop high-performance cross-platform mobile apps using Flutter.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 6 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">SecureByte Ltd</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">Cyber Security Analyst</p>
+                <p class="text-[#64748B]">Remote • Full-time • $105,000 - $140,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Monitor systems, detect threats and improve infrastructure security.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Card 7 -->
+        <div
+            class="card bg-base-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl jobs-card mt-5">
+            <div class="card-body">
+                <div class="flex justify-between items-center card-header">
+                    <h2 class="card-title text-lg font-semibold text-[#002C5C]">GreenSoft Tech</h2>
+                    <span class="p-2 bg-[#F8FAFC] rounded-full cursor-pointer text-[#64748B] delete-btn"><i
+                            class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="text-[#64748B]">Full Stack JavaScript Developer</p>
+                <p class="text-[#64748B]">Remote • Full-time • $120,000 - $160,000</p>
+                <div class="updated-status-group">
+                    <button
+                        class="btn text-[#002C5C] bg-[#EEF4FF] text-sm font-semibold border-2 updated-status cursor-default">NOT
+                        APPLIED</button>
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] updated-status cursor-default hidden">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] cursor-default updated-status hidden">REJECTED</button>
+                </div>
+                <p class="text-[#343e4b]">Work on MERN stack applications and scalable cloud deployments.</p>
+                <div class="mt-2.5 space-x-2 jobs-card-btn-group">
+                    <button
+                        class="btn text-[#10B981] text-sm font-semibold border-2 border-[#10B981] hover:text-white hover:bg-[#10B981] card-btn-interview">INTERVIEW</button>
+                    <button
+                        class="btn text-[#EF4444] text-sm font-semibold border-2 border-[#EF4444] hover:text-white hover:bg-[#EF4444] card-btn-rejected">REJECTED</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
 </body>
+
 </html>
